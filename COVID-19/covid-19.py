@@ -8,8 +8,6 @@ from sklearn.linear_model import LinearRegression
 
 import os
 
-if not os.path.exists("imagens"):
-    os.mkdir("imagens")
 
 # Após análise do arquivo CSV, é necessário utilizar o parâmetro "sep=';'", pois o separador utilizado é o ;
 df = pd.read_csv("HIST_PAINEL_COVIDBR_19jan2021.csv", sep=";")
@@ -36,8 +34,5 @@ fig.update_layout(
 
 
 fig.show()
-
-
-fig.write_image("imagens/casos_acumulados_pais.png", width=3840, height=2160)
 
 
