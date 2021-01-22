@@ -9,14 +9,28 @@ import geopandas as gpd
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 
-
+import sys
 import os
+#
+# if not os.path.exists("imagens"):
+#     os.mkdir("imagens")
 
-if not os.path.exists("imagens"):
-    os.mkdir("imagens")
+lista_completa_args = sys.argv
+lista_args = lista_completa_args[1:]
+
+if len(lista_args) == 2:
+    arquivo_csv = lista_args[0]
+    condicao_mapa = lista_args[1]
+elif len(lista_args) == 1:
+    arquivo_csv = lista_args[0]
+else:
+    print("Erro: Forneça o nome do arquivo CSV como primeiro argumento.")
+    print("Caso queria o mapa do Brasil com o número de óbitos, insira o argumento -mapa")
+    exit()
+
 
 # Após análise do arquivo CSV, é necessário utilizar o parâmetro "sep=';'", pois o separador utilizado é o ;
-df = pd.read_csv("HIST_PAINEL_COVIDBR_19jan2021.csv", sep=";")
+df = pd.read_csv(arquivo_csv, sep=";")
 df_copy = df.copy()
 
 # Pega a última data disponível no dataset e atribui a uma variável que será usada em algumas funções.
