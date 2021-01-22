@@ -30,6 +30,10 @@ A aplicação cria gráficos interativos com informações sobre a COVID-19.
   * O **segundo argumento** é **opcional**. Caso o argumento `-mapa` seja passado, será criado um arquivo `.png` com o mapa do Brasil e o número de óbitos por estado.
     * A criação do mapa pode diminuir a performance da aplicação, por isso foi deixado como padrão a não criação do mapa.
 
+**NOTA:** Para a criação do mapa, é necessário fazer o download do arquivo `bcim_2016_21_11_2018.gpkg` no site do [IBGE](https://www.ibge.gov.br/geociencias/downloads-geociencias.html). O arquivo está neste [link](https://www.ibge.gov.br/geociencias/downloads-geociencias.html), e poderá ser encontrado na árvore de arquivos conforme figura abaixo:
+![IBGE](https://github.com/Gabrielsldev/teste_meutudo/blob/main/COVID-19/imagens/mapa_ibge.jpg)
+* **O arquivo** `bcim_2016_21_11_2018.gpkg` **deve estar no mesmo diretório da aplicação principal** `covid-19.py`.
+
 ***
 ### Resultados Esperados
 
