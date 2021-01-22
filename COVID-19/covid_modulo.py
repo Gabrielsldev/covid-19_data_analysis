@@ -10,6 +10,9 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 
 
+# Cria um dataframe a partir do arquivo CSV
+
+
 def CriaDataframe(arquivo):
     # Após análise do arquivo CSV, é necessário utilizar o parâmetro "sep=';'", pois o separador utilizado é o ;
     df = pd.read_csv(arquivo, sep=";")
@@ -27,7 +30,7 @@ def UltimoDia(dataframe_covid):
     return ultima_data
 
 
-# Cria um dataframe com os casos acumulados no BrasilObitosAcumuladosUF()
+# Cria um dataframe com dados dos casos acumulados no Brasil.
 
 
 def CasosAcumuladosBr(dataframe_covid):
@@ -123,7 +126,7 @@ def GraficoObitosAcumUF(dados_grafico):
     return fig.show()
 
 
-# Cria um dataframe com o número de casos acumulados por estado, levando em conta a população.
+# Cria um dataframe com o número de casos acumulados por estado mostrando a população.
 
 
 def CasosPorPop(dataframe_covid, ultima_data):
@@ -138,7 +141,7 @@ def CasosPorPop(dataframe_covid, ultima_data):
     return casos_por_pop
 
 
-# Cria um scatter plot com número de casos acumulados por estado, levando em conta a população.
+# Cria um scatter plot com número de casos acumulados por estado mostrando a população.
 
 
 def GraficoCasosPop(dados_grafico):
@@ -160,13 +163,13 @@ def RegLinCasosPop(dados_grafico):
     X = dados_grafico["População Estado"]
     Y = dados_grafico["Casos Acumulados (por estado)"]
 
-    linear_regressor = LinearRegression()  # create object for the class
+    linear_regressor = LinearRegression()
 
-    X = X.values.reshape(-1, 1)  # values converts it into a numpy array
-    Y = Y.values.reshape(-1, 1)  # -1 means that calculate the dimension of rows, but have 1 column
+    X = X.values.reshape(-1, 1)  # Muda o shape do array, necessário para o fit()
+    Y = Y.values.reshape(-1, 1)  # Muda o shape do array, necessário para o fit()
 
-    linear_regressor.fit(X, Y)  # perform linear regression
-    Y_pred = linear_regressor.predict(X)  # make predictions
+    linear_regressor.fit(X, Y)  # Faz a regressão linear
+    Y_pred = linear_regressor.predict(X)
 
     dados_grafico.plot(x="População Estado", y="Casos Acumulados (por estado)",
                kind="scatter", title="Casos por estado x População (Regressão Linear)")
@@ -188,7 +191,7 @@ def Comparativo(casos_por_populacao, dados_obitos_uf):
     return comparativo_df
 
 
-# Cria dois graicos com número de casos e número de óbitos por estado.
+# Cria dois gráficos com número de casos e número de óbitos por estado.
 
 
 def GraficoComparacao(dados_grafico):

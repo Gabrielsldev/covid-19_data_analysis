@@ -1,11 +1,14 @@
-import covid_modulo as covid
+# Importa os módulos necessários
+import covid_modulo as covid  # Módulo com as funções desenvolvidas para criação de dataframes e grádicos.
 
 import sys
 import os
 
+# Cria a pasta "imagens" para salvar os gráficos como PNG.
 if not os.path.exists("imagens"):
     os.mkdir("imagens")
 
+# Pega os argumentos de linha de comando. O nome do arquivo CSV é obrigatório.
 lista_completa_args = sys.argv
 lista_args = lista_completa_args[1:]
 
@@ -21,12 +24,12 @@ else:
     exit()
 
 
-# Dataframe e as variáveis necessários para as funções
+# Cria o dataframe e as variáveis necessários para as funções
 
 dataframe_covid = covid.CriaDataframe(arquivo=arquivo_csv)
 ultimo_dia = covid.UltimoDia(dataframe_covid=dataframe_covid)
 
-# Cria od dataframes necessários para a formação dos gráficos
+# Cria os dataframes necessários para a formação dos gráficos
 
 dataframe_casos_acum_br = covid.CasosAcumuladosBr(dataframe_covid=dataframe_covid)
 dataframe_casos_novos_br = covid.CasosNovosBr(dataframe_covid=dataframe_covid)
@@ -43,5 +46,7 @@ covid.GraficoCasosPop(dados_grafico=dataframe_casos_pop)
 covid.RegLinCasosPop(dados_grafico=dataframe_casos_pop)
 covid.GraficoComparacao(dados_grafico=dataframe_comparativo)
 
+# Como o mapa é mais lento, o usuário pode escolher ou não gerar. Para criar o mapa, é necessário
+# utilizar o argumento -mapas.
 if condicao_mapa == "-mapa":
     covid.MapaObitosAcumUF(dados_grafico=dataframe_obitos_acum_uf)
