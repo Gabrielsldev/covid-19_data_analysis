@@ -46,7 +46,7 @@ covid.GraficoCasosPop(dados_grafico=dataframe_casos_pop)
 covid.RegLinCasosPop(dados_grafico=dataframe_casos_pop)
 covid.GraficoComparacao(dados_grafico=dataframe_comparativo)
 
-# Como o mapa é mais lento, o usuário pode escolher ou não gerar. Para criar o mapa, é necessário
+# Como a criação do mapa afeta a performance, o usuário pode escolher ou não gerar. Para criar o mapa, é necessário
 # utilizar o argumento -mapas.
 if condicao_mapa == "-mapa":
     covid.MapaObitosAcumUF(dados_grafico=dataframe_obitos_acum_uf)
